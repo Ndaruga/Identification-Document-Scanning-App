@@ -15,7 +15,8 @@ import retrofit2.http.Query;
 
 public interface RetrofitApi {
 
-    String BASE_URL = "http://sidar.us-east-2.elasticbeanstalk.com/api/v1/";
+//    String BASE_URL = "http://sidar-development-env.ap-southeast-2.elasticbeanstalk.com/api/v1/";
+    String BASE_URL = "http://localhost:5500/api/v1/";
 
     @POST("visitor/register")
     Call<String> registerVisitor(@Body Visitors visitors); // Return type is Call<String>

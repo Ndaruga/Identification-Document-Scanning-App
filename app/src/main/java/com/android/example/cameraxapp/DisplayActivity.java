@@ -50,7 +50,7 @@ public class DisplayActivity extends AppCompatActivity {
     private static final String TAG = "API Response";
 
     private ProgressBar progressBar;
-    String selectedFloor;
+    String selectedVisitReason;
     String selectedOrganization;
     List<String> organizationNames = new ArrayList<>();
 
@@ -186,7 +186,7 @@ public class DisplayActivity extends AppCompatActivity {
 
         // Spinners
         Spinner organizationSpinner = findViewById(R.id.organization_spinner);
-        Spinner floorSpinner = findViewById(R.id.floor_spinner);
+        Spinner visitReasonSpinner = findViewById(R.id.visit_reason_spinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, organizationNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -205,15 +205,15 @@ public class DisplayActivity extends AppCompatActivity {
             }
         });
 
-        List<String> floors = Arrays.asList("Select Floor", "Ground", "1st", "2nd", "3rd", "4th", "5th");
-        ArrayAdapter<String> floorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, floors);
-        floorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        floorSpinner.setAdapter(floorAdapter);
+        List<String> visitReason = Arrays.asList("Select Visit Reason","Work", "Meeting", "Delivery", "Application", "Interview", "Seminars", "Classes");
+        ArrayAdapter<String> visitReasonAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, visitReason);
+        visitReasonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        visitReasonSpinner.setAdapter(visitReasonAdapter);
 
-        floorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        visitReasonSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedFloor = parent.getItemAtPosition(position).toString();
+                selectedVisitReason = parent.getItemAtPosition(position).toString();
                 // Handle the selected floor
             }
 
@@ -241,10 +241,10 @@ public class DisplayActivity extends AppCompatActivity {
             String documentNumber = textDocNoView.getText() == null ? null : textDocNoView.getText().toString();
             String phoneNo = textPhoneNoView.getText() != null ? textPhoneNoView.getText().toString() : null;
             String vehicleNumberPlate = numberPlateView.getText() == null ? null : numberPlateView.getText().toString();
-            String floorNumber = selectedFloor;
+            String visitingReason = selectedVisitReason;
             String organizationName = selectedOrganization;
 
-            Log.d("Selected Floor", selectedFloor != null ? selectedFloor : "null");
+            Log.d("Selected visitReason", selectedVisitReason != null ? selectedVisitReason : "null");
             Log.d("Selected Organization", selectedOrganization != null ? selectedOrganization : "null");
             Log.d("From Post Data btn: ", documentType != null ? documentType : "null");
             Log.d("From Post Data btn: ", documentNumber != null ? documentNumber : "null");
@@ -257,7 +257,7 @@ public class DisplayActivity extends AppCompatActivity {
 
 
             PostData(documentType, documentNumber, textNameView.getText().toString(),
-                    phoneNo, floorNumber, organizationName,
+                    phoneNo, visitingReason, organizationName,
                     vehicleNumberPlate, workId, buildingId);
         });
     }

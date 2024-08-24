@@ -13,7 +13,7 @@ st.set_page_config(layout="wide", initial_sidebar_state="auto")
 # Define database connection using SQLAlchemy
 @st.cache_data
 def get_data(query):
-    engine = create_engine("postgresql://SidarAdmin0:0nimdAradiS@sidar-dev-db.postgres.database.azure.com:5432/sidar")
+    engine = create_engine("postgresql://SidarAdmin0:0nimdAradiS@sidar-test-db.postgres.database.azure.com:5432/Sidar")
     with engine.connect() as conn:
         data = pd.read_sql(query, conn)
     return data
@@ -280,7 +280,7 @@ def get_total_personnel(company_id):
 
 
 # Sample Company ID - Replace with dynamic input
-company_id = 'CMP111'
+company_id = 'CMP112'
 
 # Fetch the company name for the title
 company_name = get_company_name(company_id)
