@@ -129,8 +129,9 @@ public class VisitorDetails {
         return visitReason;
     }
 
-    public void setVisitReason(String floorNo) {
-        this.visitReason = floorNo;
+
+    public void setVisitReason(String visitReason) {
+        this.visitReason = visitReason;
     }
 
     public String getOrganization() {
