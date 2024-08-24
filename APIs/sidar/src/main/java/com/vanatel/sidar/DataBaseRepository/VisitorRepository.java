@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface VisitorRepository extends JpaRepository<VisitorDetails, BigInteger> {
+public interface VisitorRepository extends JpaRepository<VisitorDetails, Integer> {
     Optional<VisitorDetails> findByVisitorDocNo(String visitorDocNo);
     List<VisitorDetails> findByVisitorFullName(String visitorName);
     List<VisitorDetails> findByVisitorPhone(long phoneNumber);
