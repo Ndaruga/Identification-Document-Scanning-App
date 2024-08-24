@@ -4,8 +4,6 @@ import com.vanatel.sidar.DataBaseRepository.VisitorRepository;
 import com.vanatel.sidar.Model.VisitorDetails;
 import com.vanatel.sidar.Service.VisitorService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -21,8 +19,9 @@ public class VisitorServiceImpl implements VisitorService {
 
     @Override
     public String registerVisitor(VisitorDetails visitorDetails) {
-//        Set the current time before saving
+//        Set the current time and new Visitor ID before saving
         visitorDetails.setSignInTime(new Timestamp(System.currentTimeMillis()));
+        visitorDetails.setId(visitorRepository.findLastVisitorID());
         visitorRepository.save(visitorDetails);
         return "Visitor Registered Successfully";
     }

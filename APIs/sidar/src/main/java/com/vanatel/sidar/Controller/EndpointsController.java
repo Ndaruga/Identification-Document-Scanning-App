@@ -35,6 +35,7 @@ public class EndpointsController {
 
     @GetMapping ("/company/profile")
     public String companyProfile() { return "./company/company-profile.html"; }
+//    public String companyProfile() { return "redirect:http://localhost:8501"; }
 
     @GetMapping("/company/buildings")
     public String buildings() { return "./company/buildings.html"; }
@@ -44,6 +45,9 @@ public class EndpointsController {
 
     @GetMapping("/company/buildings/personnel")
     public String buildingsPersonnel() { return "./company/personnel.html"; }
+
+    @GetMapping("/company/Analytics")
+    public String analytics() { return "redirect:http://localhost:8501"; }
 
 
 

@@ -2,6 +2,7 @@ package com.vanatel.sidar.DataBaseRepository;
 
 import com.vanatel.sidar.Model.VisitorDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
@@ -9,10 +10,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface VisitorRepository extends JpaRepository<VisitorDetails, BigInteger> {
+public interface VisitorRepository extends JpaRepository<VisitorDetails, Integer> {
     Optional<VisitorDetails> findByVisitorDocNo(String visitorDocNo);
     List<VisitorDetails> findByVisitorFullName(String visitorName);
     List<VisitorDetails> findByVisitorPhone(long phoneNumber);
 
     Optional<VisitorDetails> findByVisitorDocNoAndSignOutTimeIsNull(String documentNo);
+
+    @Query("SELECT v.id FROM VisitorDetails v ORDER BY v.id DESC LIMIT 1")
+    Integer findLastVisitorID();
 }

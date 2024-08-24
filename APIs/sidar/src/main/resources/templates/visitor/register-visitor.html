@@ -65,15 +65,15 @@
             <input type="tel" id="visitorPhone" name="visitorPhone" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="floorNo">Floor Number:</label>
-            <select id="floorNo" name="floorNo" class="form-control">
-                <option>Select Floor</option>
-                <option value="Ground">Ground</option>
-                <option value="1st">1st</option>
-                <option value="2nd">2nd</option>
-                <option value="3rd">3rd</option>
-                <option value="4th">4th</option>
-                <option value="5th">5th</option>
+            <label for="visitReason">Reason for Visit:</label>
+            <select id="visitReason" name="visitReason" class="form-control">
+                <option>Select Visit reason</option>
+                <option value="Work">Work</option>
+                <option value="Meeting">Meeting</option>
+                <option value="Delivery">Delivery</option>
+                <option value="Interview">Interview</option>
+                <option value="Seminar">Seminar</option>
+                <option value="Classes">Classes</option>
             </select>
         </div>
         <div class="form-group">
@@ -109,12 +109,12 @@
         e.preventDefault();
 
         // Get selected values
-        const floorNo = document.getElementById('floorNo').value;
+        const visitReason = document.getElementById('visitReason').value;
         const organization = document.getElementById('organization').value;
 
         // Validation
-        if (floorNo === "Select Floor"){
-            showToastMessage("Please Select Floor")
+        if (visitReason === "Select Visit reason"){
+            showToastMessage("Please Select a reason for Visit")
             return
         }else if (organization === "Select Organization Name") {
             showToastMessage('Please select Organization.');
@@ -126,11 +126,11 @@
             visitorDocNo: document.getElementById('visitorDocNo').value,
             visitorFullName: document.getElementById('visitorFullName').value,
             visitorPhone: document.getElementById('visitorPhone').value,
-            floorNo: floorNo,
+            visitReason: visitReason,
             organization: organization,
             vehicleNumberPlate: document.getElementById('vehicleNumberPlate').value,
-            // signedInBy: document.getElementById('signedInBy').value,
-            // buildingName: document.getElementById('buildingName').value
+            signedInBy: "WEB",
+            buildingId: "BID0001"
         };
 
         const response = await fetch('/api/v1/visitor/register', {

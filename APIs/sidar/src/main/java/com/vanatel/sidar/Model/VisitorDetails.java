@@ -15,7 +15,7 @@ public class VisitorDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "signin_time")
     private Timestamp signInTime;
@@ -32,8 +32,8 @@ public class VisitorDetails {
     @Column(name = "phone_number")
     private long visitorPhone;
 
-    @Column(name = "floor_number")
-    private String floorNo;
+    @Column(name = "visit_reason")
+    private String visitReason;
 
     @Column(name = "organization_name")
     private String organization;
@@ -59,7 +59,7 @@ public class VisitorDetails {
     }
 
     public VisitorDetails(Timestamp signInTime, String documentType, String visitorDocNo,
-                          String visitorFullName, long visitorPhone, String floorNo,
+                          String visitorFullName, long visitorPhone, String visitReason,
                           String organization, String vehicleNumberPlate, String signedInBy,
                           Timestamp signOutTime, String signedOutBy, String buildingId) {
 
@@ -68,7 +68,7 @@ public class VisitorDetails {
         this.visitorDocNo = visitorDocNo;
         this.visitorFullName = visitorFullName;
         this.visitorPhone = visitorPhone;
-        this.floorNo = floorNo;
+        this.visitReason = visitReason;
         this.organization = organization;
         this.vehicleNumberPlate = vehicleNumberPlate;
         this.signedInBy = signedInBy;
@@ -77,11 +77,11 @@ public class VisitorDetails {
         this.buildingId = buildingId;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -125,12 +125,12 @@ public class VisitorDetails {
         this.visitorPhone = visitorPhone;
     }
 
-    public String getFloorNo() {
-        return floorNo;
+    public String getVisitReason() {
+        return visitReason;
     }
 
-    public void setFloorNo(String floorNo) {
-        this.floorNo = floorNo;
+    public void setVisitReason(String floorNo) {
+        this.visitReason = floorNo;
     }
 
     public String getOrganization() {
@@ -173,11 +173,11 @@ public class VisitorDetails {
         this.signedOutBy = signedOutBy;
     }
 
-    public String getBuildingName() {
+    public String getBuildingId() {
         return buildingId;
     }
 
-    public void setBuildingName(String buildingId) {
+    public void setBuildingId(String buildingId) {
         this.buildingId = buildingId;
     }
 }
